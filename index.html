@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
+   
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
+    <title>Document</title>
+</head>
+<body class="container main_page" >
+    
+    
+    
+    <!-- <button class="btn btn-info btn-sm " id="add_cart_button" ><a href="user_form.html">Add to Cart</a></button> -->
+
+    <button class="btn btn-info btn-sm " id="add_cart_button" onclick="open_form()" >Add cart form</button>
+    <button class="btn open_user_form" onclick="dummy()"> check</button>
+    <b id="total_cart_value"></b><br>
+
+    <div class="cards_appending_div"></div> &nbsp;
+    
+    <div class="Total_foot_bar container-sm">
+      <span>Shipping : </span>
+      <span style="border: 1px solid black" class="shipping_charge"></span>
+      <span>Total tax : </span>
+      <span style="border: 1px solid black" class="total_tax"></span>
+      <span>Total Price : </span>
+      <span style="border: 1px solid black" class="total_product_price"></span>
+      <span>Net Total : </span>
+      <span style="border: 1px solid black" class="net_total"></span>
+    </div>
+    
+    <div class="user_form" style="display: none;">
+    
+        <label for "product">Product Name :</label><br>
+          <input type="text" id="product_name" class="product"><br>
+        <label for "price">Price:</label><br>
+          <input type="number" id="product_price" class="price"><br><br>
+          
+          <div>
+            <span>
+              <label for "quantities">Quantity:</label>  
+                <select id="quantity" class="quantities">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                </select>  &nbsp;
+            </span>
+
+            <span>  
+              <label for "tax">GST(%) :</label> 
+              <input type="number" id="GST" class="tax" min="1" max="20">
+            </span>
+
+          </div>
+        <!-- <button id="user_submission" class="btn-outline-primary" onclick="add_cart()"><a href="first.html">Add to cart</a></button> -->
+        <button id="user_submission" class="btn-outline-primary" onclick="add_cart()">Add to cart</button> 
+        <button class="close_form" onclick="close_form()">Close</button>
+    
+    </div>
+</body>
+</html>
