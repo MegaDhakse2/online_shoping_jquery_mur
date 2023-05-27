@@ -22,8 +22,12 @@ class Car {
     // var selected;
     
     $(function(){
+        // $(".update_form").click(function(){
+        //     updated_base_values(product_name, product_price, quantity, tax);
+        // });
         total_cart_value();
         update_total_foot_bar(net_total, shipping_charge, total_product_price_tax, total_product_price);
+
     });
 
 function add_cart(){
@@ -87,7 +91,7 @@ function appending_form_data(){
             </button>
             </span>
             <span> <button class="btn btn-outline-info btn-sm" onclick="edit_cart('${product_name}', ${product_price}, 
-            ${quantity}, ${tax});">edit</button> </span>
+            ${quantity}, ${tax}, ${card_id});">edit</button> </span>
 
         </div>
    </div>`;
@@ -142,14 +146,19 @@ function remove_from_cart(card_id, quantity, tax_amount, product_price_including
 
 }
 
-function edit_cart(p_name, p_price, quant, gst){
+function edit_cart(p_name, p_price, quant, gst, card_id){
 
+    $(".user_form").css({"display":"block"});
     $("#product_name").val(p_name);
     $("#product_price").val(p_price);
     $("#quantity").val(quant);
     $("#GST").val(gst);
     // dummy();
-    updated_base_values();
+    // updated_base_values();
+    alert("  product_name:" + product_name + " \n product_price:" + product_price + " \n quantity:" + quantity + typeof(quantity) + " \n tax:" + tax + "\n card_id" + card_id);
+    $(".update_form").click(function(){
+      updated_base_values(card_id);
+    });
 }
 
 function update_total_foot_bar(net_total, shipping_charge, total_product_price_tax, total_product_price){
@@ -166,22 +175,32 @@ function update_total_foot_bar(net_total, shipping_charge, total_product_price_t
 }
 
 
-function updated_base_values(){
+function updated_base_values(card_id){
+    var cardId = $(this).closest('.card').data('card-id');
+
     product_name = $("#product_name").val();
     product_price = parseInt($("#product_price").val());
     quantity = parseInt($("#quantity").val());
     tax = parseInt($("#GST").val());
-    alert("  product_name:" + product_name + " \n product_price:" + product_price + " \n quantity:" + quantity + typeof(quantity) + " \n tax:" + tax);
+    alert("  product_name:" + product_name + " \n product_price:" + product_price + " \n quantity:" + quantity + typeof(quantity) + " \n tax:" + tax + "\n card_id" + card_id + cardId);
     close_form();
   
     product_price_including_quantity = product_price * quantity;  //to calculate tax amount
     product_price_tax(product_price_including_quantity);
+   
+    $('[id="' + card_id + '"]').find('#p_name').text(product_name);
+    $('[id="' + card_id + '"]').find('#p_price').text(product_price);
+    $('[id="' + card_id + '"]').find('#quant').text(quantity);
+    $('[id="' + card_id + '"]').find('#gst').text(tax_amount);
 
-    $("#p_name").text(product_name);
-    $("#p_price").text(product_price);
-    $("#quant").text(quantity);
-    $("#gst").text(tax_amount);
+    // $("#p_name").text(product_name);
+    // $("#p_price").text(product_price);
+    // $("#quant").text(quantity);
+    // $("#gst").text(tax_amount);
 
     // update_total_foot_bar(net_total, shipping_charge, total_product_price_tax, total_product_price);
 }
+
+
+
 
