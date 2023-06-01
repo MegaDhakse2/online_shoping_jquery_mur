@@ -21,7 +21,7 @@
     <!-- <button class="btn btn-info btn-sm " id="add_cart_button" ><a href="user_form.html">Add to Cart</a></button> -->
 
     <button class="btn btn-info btn-sm " id="add_cart_button" onclick="open_form()" >Add cart form</button>
-    <button class="btn open_user_form" onclick="dummy()"> check</button>
+    <button class="btn open_user_form" onclick="total_val_by_jquery()"> check</button>
     <b id="total_cart_value"></b><br>
 
     <div class="cards_appending_div"></div> &nbsp;
@@ -69,8 +69,10 @@
           </div>
         <!-- <button id="user_submission" class="btn-outline-primary" onclick="add_cart()"><a href="first.html">Add to cart</a></button> -->
         <button id="user_submission" class="btn-outline-primary" onclick="add_cart()">Add to cart</button> 
+        <button class="update_form" style="display: none;">update</button>
         <button class="close_form" onclick="close_form()">Close</button>
-        <button class="update_form">update</button>
+
+        <!-- <button class="update_form" onclick="updated_base_values(card_id)">update</button> -->
 
     </div>
 </body>
